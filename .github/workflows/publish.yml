@@ -83,7 +83,7 @@ jobs:
 
       - name: Read version and package
         run: |
-           PACKAGE_FILENAME=$(npm pack --pack-destination ./)
+           PACKAGE_FILENAME=$(npm pack --pack-destination ./ | grep -E '^[a-z]' | head -n 1)
            echo "PACKAGE_FILENAME=$PACKAGE_FILENAME" >> $GITHUB_ENV
 
       - name: Import GPG private key
